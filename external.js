@@ -1,105 +1,140 @@
+//Non Primitive Dataypes
 
-let value = prompt("What is the 'official' name of javascript",'');
-if(value == 'ECMAScript'){
-    alert("Right!");
-}
-else{ 
-alert("You dont know this?ECMAScript it is!");
-}
+    let object={
+        Pname: 'Nikita',
+        age: 21,
+        message:function(){
+            console.log("Hello");
+        }
+    };
+    object.message();
+    let a = 0b11111111; // binary form of 255
+    let b = 0o377; // octal form of 255
+    let c = 0xff; //hexadecimal form of 255
 
+    console.log( a == b );
+//
 
-let number = prompt("ENTER THE NUMBER",'');
-if (value > 0){
-    alert("1");
-}
-else if (value < 0){
-    alert("-1");
-}
-else {
-    alert("0");
-}
+    function readNum(){
+        let num;
+        do{
+            num=prompt("Enter the valid number",'0');
 
-let num=10;
-nextNum:
-for(let i=2;i<=num;i++){
-    for(let j=2;j<i;j++){
-        if(i%j==0) continue nextNum;
-
+        }while(!isFinite==num)
+        return +num;
     }
-alert(i);
+    console.log(`Number: ${readNum()}`);
+
+    let str = 'As sly as a fox, as strong as an ox';
+
+//string searching
+
+let target = 'as'; // let's look for it
+
+let pos = 0;
+while (true) {
+  let foundPos = str.indexOf(target, pos);
+  if (foundPos == -1) break;
+
+  console.log( `Found at ${foundPos}` );
+  pos = foundPos + 1; // continue the search from the next position
 }
 
-let browser = prompt("Enter the browser",'');
-if (browser == "edge"){
-    alert("You've got the edge!");
+let styles = ['jazz','blues'];
+styles.push('Rock-n-Roll');
+styles[Math.floor((styles.length-1)/2)]='Classics';
+console.log(styles);
+console.log(styles.shift());
+styles.unshift('Rap','Raggae');
+console.log(styles);
+
+
+function Total(){
+let arr=[];
+console.log(process());
+function process(){
+var values=+prompt("Enter the values",'');
+if(values==''||values==null||!isFinite(values)) return;
+else
+arr.push(+values)
 }
-else if (browser == "chrome" || browser =="safari" || browser =="opera" || browser =="firefox"){
-    alert("Okay we support these browsers too");
-
+let sum=0;
+for(let i=0;i<=arr.length;i++){
+    sum+=values;
+    return sum;
 }
-else alert("We hope that this page looks okay")
-
-let a = prompt("Enter the value");
-switch (a){
-    case '0':
-        alert("0")
-    break;
-    case '1':
-        alert("1")
-    break;
-    case '2':
-    case '3':
-        alert("2,3")
-    break;
 }
+console.log(Total());
 
-
-
-
-function leastNum(m,n){
-    if (m<=n?m:n)
-    return;
-}
-let m = prompt("m= ",'');
-let n = prompt("n=",'');
-
-leastNum(m,n);
-
-let x = prompt("a= ",'');
-let n = prompt("b=",'');
-
-function pow(x,n){
-    let result = x;
-    result=x;
-    for (let i =1;i<=n;i++){
-        result = result*x;
+//Iteration
+let range={ from:1,to:5,
+[Symbol.iterator](){
+    this.current = this.from;
+    return this;
+},
+next(){
+    if(this.current<=this.to){
+        return{done:false,value:this.current++};
+    
     }
-    return result;
+    else{return{done:true};
 }
-alert(x);
+}
+};
 
-pow(3,2);
+for(let num of range){
+    alert(num);
+}
 
-let age = promt("Enter your age",'');
-let welcome;
-if (age<18){
-    welcome = function(){
-        alert("hello");
+let salaries = {
+    "John": 100,
+    "Pete": 300,
+    "Mary": 250
+  };
+  
+  function sumsalaries(salaries){
+      let sum=0;
+      for(let values of Object.values(salaries)){
+      sum+=salaries;
+      }
+  }
+  alert( sumSalaries(salaries) );
+////////
 
+
+  let user = {
+    name: 'John',
+    age: 30
+  };
+  
+  function count(obj){
+      return Object.keys(obj).length;
+      }
+  alert( count(user) );
+
+  
+
+////////
+let salaries = {
+    "John": 100,
+    "Pete": 300,
+    "Mary": 250
+  };
+function topSalaries(salaries){
+    let topPaidPerson=null;
+    let topSalary=0;
+    for(const[name,salary] of Object.entries(salaries)){
+        if (topSalary<salary){
+            topSalary=salary;
+            topPaidPerson=name;
+
+
+        }
     }
-}
-else welcome = function()
-{
-    alert("Greetings");
+    return topPaidPerson;
 }
 
-welcome();
-
-function ask(question, yes, no) {
-if (confirm(question)) yes();
-else no();
-}
-
-ask("Do you agree?",
-() => alert("You agreed."),
-() => alert("You canceled the execution."));
+///////
+console.log(new Date());
+console.log(new Date(24 * 3600 * 1000));
+console.log(new Date(-24 * 3600 * 1000));
